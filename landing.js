@@ -99,6 +99,8 @@ async function initLanding() {
     const vehicleSnaps = await Promise.all(vehicleIds.map(id => getDoc(doc(db, 'vehicles', id))));
     vehicleSnaps.forEach(snap => { if (snap.exists()) vehiclesData[snap.id] = snap.data(); });
 
+    /* 
+    // Temporarily disabled Firestore override for main featured car to respect hardcoded Fairlady Z preference
     if (config.mainFeatured?.vehicleId && vehiclesData[config.mainFeatured.vehicleId]) {
       const v = vehiclesData[config.mainFeatured.vehicleId];
       const img = document.getElementById('main-featured-img');
@@ -111,6 +113,7 @@ async function initLanding() {
         desc.innerHTML = `${config.mainFeatured.description || v.description} <a class="text-white no-underline hover:underline decoration-2 font-bold" href="inventory.html#${v.stockNumber}">Details</a>`;
       }
     }
+    */
 
     if (secondaryContainer && config.secondaryFeatured?.length > 0) {
       secondaryContainer.innerHTML = '';
