@@ -72,8 +72,32 @@
     html { scroll-behavior: smooth; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(60px); 
+      transition-property: opacity, transform;
+      transition-duration: 0.8s;
+      transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .reveal.active { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+    .reveal-inner > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition-property: opacity, transform;
+      transition-duration: 0.8s;
+      transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .reveal.active.reveal-inner > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.active.reveal-inner > *:nth-child(1) { transition-delay: 0.1s; }
+    .reveal.active.reveal-inner > *:nth-child(2) { transition-delay: 0.2s; }
+    .reveal.active.reveal-inner > *:nth-child(3) { transition-delay: 0.3s; }
+    .reveal.active.reveal-inner > *:nth-child(4) { transition-delay: 0.4s; }
     .car-slide { 
       transform: translateX(200%); 
       opacity: 0; 
@@ -181,7 +205,7 @@
           <p class="text-slate-500 font-bold text-sm tracking-widest uppercase">Loading Featured...</p>
         </div>
 
-        <div id="main-featured-container" data-dynamic="true" class="md:col-span-8 reveal opacity-0 transition-opacity duration-500">
+        <div id="main-featured-container" data-dynamic="true" class="md:col-span-8 reveal" style="transition-delay: 0ms;">
           <div class="group relative aspect-video overflow-hidden rounded-xl shadow-sm">
             <img id="main-featured-img" alt="Featured Vehicle" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://danburgess.com/2026-assets/JDM/1971-240Z01.jpg" referrerPolicy="no-referrer">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity hidden md:block"></div>
@@ -195,7 +219,7 @@
             <p class="text-on-surface font-bold text-lg"><span id="main-featured-title-mobile">1971 Nissan Fairlady Z</span> - <a id="main-featured-link-mobile" class="text-secondary hover:underline decoration-2 font-bold" href="inventory.html#J.6511">Details</a></p>
           </div>
         </div>
-        <div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 hidden md:flex flex-col justify-between border border-transparent hover:border-outline-variant/30 transition-all reveal">
+        <div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 hidden md:flex flex-col justify-between border border-transparent hover:border-outline-variant/30 transition-all reveal reveal-inner" style="transition-delay: 150ms;">
           <div><span class="material-symbols-outlined text-secondary text-5xl mb-6">verified</span><h4 class="text-2xl font-bold text-primary mb-4">Grade A Curation</h4><p class="text-on-surface-variant leading-relaxed">All vehicles undergo a thorough mechanical and cosmetic inspection.</p>
           <p>We help customers access Japanese car auctions, find their ideal vehicles, place bids and handle the entire import process.</p></div>
           <a class="flex items-center text-secondary font-bold group-hover:translate-x-2 transition-transform" href="inventory.html">See more vehicles<span class="material-symbols-outlined ml-2">trending_flat</span></a>
@@ -216,13 +240,13 @@
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
-        <div class="md:col-span-8 bg-white p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant flex flex-col justify-center reveal">
+        <div class="md:col-span-8 bg-white p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant flex flex-col justify-center reveal reveal-inner" style="transition-delay: 0ms;">
           <div class="text-on-surface-variant leading-relaxed text-lg space-y-6">
             <p>We have been exporting cars from Japan since 1996. We do not keep a lot of vehicles in stock and mainly buy to order but are happy to search for any particular model (we are members of most auction associations in Japan) and we can give you a rough idea of cost for any vehicle depending on the many variables.</p>
             <p>All cars are supplied with auction report and service history. We organize all shipping and transportation thus saving you money. Our prices are very competitive and we aim to buy the best car for the best price. Drop us a line via the Contact form below.</p>
           </div>
         </div>
-        <div class="md:col-span-4 bg-white p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant flex flex-col items-center justify-center text-center reveal overflow-hidden">
+        <div class="md:col-span-4 bg-white p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant flex flex-col items-center justify-center text-center reveal overflow-hidden" style="transition-delay: 150ms;">
           <img alt="Logo" class="w-full max-w-[280px] h-auto object-contain mb-6 car-slide" src="https://danburgess.com/2026-assets/JDM/JDM-Retrorides-logo1.png" referrerPolicy="no-referrer">
           <div class="text-3xl font-black text-primary tracking-tighter">JDM Retro Rides</div>
         </div>
@@ -239,7 +263,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-surface p-8 rounded-xl border border-outline-variant flex flex-col h-full shadow-sm reveal group">
+        <div class="bg-surface p-8 rounded-xl border border-outline-variant flex flex-col h-full shadow-sm reveal reveal-inner group" style="transition-delay: 0ms;">
           <div class="overflow-hidden rounded-lg mb-6 shadow-sm">
             <img alt="GTR" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105" src="https://carniche.co.jp/wp-content/uploads/2026/01/1989-Nissan-GTR-wht.jpg" referrerPolicy="no-referrer">
           </div>
@@ -249,7 +273,7 @@
             <p class="text-slate-500 text-[10px] uppercase tracking-widest mt-1">United States</p>
           </div>
         </div>
-        <div class="bg-[#555c6e] p-8 rounded-xl flex flex-col h-full shadow-xl reveal group">
+        <div class="bg-[#555c6e] p-8 rounded-xl flex flex-col h-full shadow-xl reveal reveal-inner group" style="transition-delay: 150ms;">
           <div class="overflow-hidden rounded-lg mb-6 shadow-sm">
             <img alt="Beat" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105" src="https://carniche.co.jp/wp-content/uploads/2026/01/1994-Honda-Beat-red.jpg" referrerPolicy="no-referrer">
           </div>
@@ -259,7 +283,7 @@
             <p class="text-slate-300 text-[10px] uppercase tracking-widest mt-1">United Kingdom</p>
           </div>
         </div>
-        <div class="bg-surface p-8 rounded-xl border border-outline-variant flex flex-col h-full shadow-sm reveal group">
+        <div class="bg-surface p-8 rounded-xl border border-outline-variant flex flex-col h-full shadow-sm reveal reveal-inner group" style="transition-delay: 300ms;">
           <div class="overflow-hidden rounded-lg mb-6 shadow-sm">
             <img alt="WRX" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105" src="https://carniche.co.jp/wp-content/uploads/2026/02/2018-Impressa-WRX-Sti-blue.jpg" referrerPolicy="no-referrer">
           </div>
@@ -275,7 +299,7 @@
 
   <section class="py-24 bg-surface-container-low px-8 scroll-mt-20" id="contact">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      <div class="relative bg-white p-8 md:p-12 rounded-xl border border-outline-variant reveal overflow-hidden">
+      <div class="relative bg-white p-8 md:p-12 rounded-xl border border-outline-variant reveal overflow-hidden" style="transition-delay: 0ms;">
         <div class="absolute inset-0 z-0">
           <img alt="Auction Background" class="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity" src="https://www.danburgess.com/2026-assets/JDM/USS-auction-AI.jpg" referrerPolicy="no-referrer">
           <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/30"></div>
@@ -296,7 +320,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-white p-8 md:p-12 rounded-xl border border-outline-variant reveal">
+      <div class="bg-white p-8 md:p-12 rounded-xl border border-outline-variant reveal reveal-inner" style="transition-delay: 150ms;">
         <form action="#" class="space-y-6" onsubmit="event.preventDefault(); alert('Message sent!');">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="space-y-2">
@@ -366,7 +390,6 @@
     document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     
     const heroImg = document.getElementById('hero-img');
-    const reveals = document.querySelectorAll('.reveal');
     
     // Reveal on scroll
     const navLinks = document.querySelectorAll('.nav-link');
@@ -380,7 +403,7 @@
       }
       
       // Reveal on scroll
-      reveals.forEach(el => {
+      document.querySelectorAll('.reveal').forEach(el => {
         // Skip dynamic elements until they are loaded
         if (el.dataset.dynamic === "true" && el.dataset.loaded !== "true") return;
         
@@ -529,9 +552,10 @@
         const secondaryContainer = document.getElementById('secondary-featured-container');
         if (secondaryContainer) {
           secondaryContainer.innerHTML = '';
-          vSecondary.forEach(v => {
+          vSecondary.forEach((v, index) => {
             const slot = document.createElement('div');
-            slot.className = 'md:col-span-4 active group';
+            slot.className = 'md:col-span-4 group reveal reveal-inner';
+            slot.style.transitionDelay = `${index * 150}ms`;
             slot.innerHTML = `
               <div class="aspect-video overflow-hidden rounded-xl mb-3 shadow-sm border border-outline-variant">
                 <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${v.images[0]}">

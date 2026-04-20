@@ -46,10 +46,11 @@ async function initLanding() {
     // Render Secondary Grid
     if (secondaryContainer) {
       secondaryContainer.innerHTML = '';
-      vSecondary.forEach(v => {
+      vSecondary.forEach((v, index) => {
         const thumb = v.images[0] || 'https://placehold.co/800x600/1e293b/white?text=PHOTO+COMING+COON';
         const slot = document.createElement('div');
-        slot.className = 'md:col-span-4 reveal active';
+        slot.className = 'md:col-span-4 reveal reveal-inner group';
+        slot.style.transitionDelay = `${index * 150}ms`;
         slot.innerHTML = `
           <div class="group relative aspect-video overflow-hidden rounded-xl shadow-sm mb-3">
             <img alt="${v.title}" referrerpolicy="no-referrer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${thumb}">
@@ -68,12 +69,10 @@ async function initLanding() {
       if (mainContainer) {
         mainContainer.dataset.loaded = "true";
         mainContainer.classList.remove('opacity-0');
-        mainContainer.classList.add('active');
       }
       if (secondaryContainer) {
         secondaryContainer.dataset.loaded = "true";
         secondaryContainer.classList.remove('opacity-0');
-        secondaryContainer.classList.add('active');
       }
       window.dispatchEvent(new Event('scroll'));
     }, 500);
@@ -117,12 +116,13 @@ async function initLanding() {
 
     if (secondaryContainer && config.secondaryFeatured?.length > 0) {
       secondaryContainer.innerHTML = '';
-      config.secondaryFeatured.forEach(item => {
+      config.secondaryFeatured.forEach((item, index) => {
         const v = vehiclesData[item.vehicleId];
         if (!v) return;
         const thumb = item.photoUrl || v.images[0];
         const slot = document.createElement('div');
-        slot.className = 'md:col-span-4 reveal active';
+        slot.className = 'md:col-span-4 reveal reveal-inner group';
+        slot.style.transitionDelay = `${index * 150}ms`;
         slot.innerHTML = `
           <div class="group relative aspect-video overflow-hidden rounded-xl shadow-sm mb-3">
             <img alt="${v.title}" referrerpolicy="no-referrer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${thumb}">
