@@ -345,44 +345,44 @@ function renderInventory() {
           <span class="px-2 py-1 rounded text-[10px] font-black tracking-widest shrink-0 ${statusClass}">${v.status}</span>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-8">
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1 md:gap-y-4 mb-8">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Price</span>
             <span class="font-bold text-secondary text-lg">¥${parseInt(v.price).toLocaleString()}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Year</span>
             <span class="font-bold text-sm">${v.year}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Mileage</span>
             <span class="font-bold text-sm">${v.mileage ? v.mileage.toLocaleString() + ' km' : 'N/A'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Displacement</span>
             <span class="font-bold text-sm">${v.displacement ? v.displacement.toLocaleString() + ' cc' : 'N/A'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Transmission</span>
             <span class="font-bold text-sm">${v.transmission}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Color</span>
             <span class="font-bold text-sm">${v.color || 'N/A'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Repaired</span>
             <span class="font-bold text-sm">${v.repaired || 'No repair history'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Seating capacity</span>
             <span class="font-bold text-sm">${v.seatingCapacity || 'N/A'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Grade</span>
             <span class="font-bold text-sm">${v.grade || 'N/A'}</span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b-0 md:border-b border-slate-100 pb-0 md:pb-2">
             <span class="text-slate-500 text-sm">Drive system</span>
             <span class="font-bold text-sm">${v.driveSystem || 'N/A'}</span>
           </div>
@@ -537,6 +537,19 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextSlide();
   if (e.key === 'ArrowLeft') prevSlide();
   if (e.key === 'Escape') closeSlideshow();
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+modal.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+modal.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX < touchStartX - 50) nextSlide();
+  if (touchEndX > touchStartX + 50) prevSlide();
 });
 
 // ESC key to close all overlays
