@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* JDM Retro Rides — Dark Heritage Design System
+   Charcoal + Bronze. All colors HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core surfaces — deep charcoal */
+    --background: 24 10% 7%;
+    --foreground: 36 30% 92%;
+
+    --card: 24 8% 10%;
+    --card-foreground: 36 30% 92%;
+
+    --popover: 24 10% 9%;
+    --popover-foreground: 36 30% 92%;
+
+    /* Primary — antique bronze */
+    --primary: 32 55% 52%;
+    --primary-foreground: 24 15% 8%;
+    --primary-glow: 36 70% 62%;
+
+    /* Secondary — warm graphite */
+    --secondary: 24 8% 14%;
+    --secondary-foreground: 36 25% 88%;
+
+    --muted: 24 6% 16%;
+    --muted-foreground: 32 12% 62%;
+
+    --accent: 32 55% 52%;
+    --accent-foreground: 24 15% 8%;
+
+    /* Signal red — used sparingly for SOLD/urgency */
+    --destructive: 6 72% 50%;
+    --destructive-foreground: 36 30% 95%;
+
+    --success: 142 45% 45%;
+    --success-foreground: 36 30% 95%;
+
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 32 55% 52%;
+
+    --radius: 0.25rem;
+
+    /* Brand gradients & shadows */
+    --gradient-bronze: linear-gradient(135deg, hsl(32 55% 52%), hsl(36 70% 62%));
+    --gradient-hero: linear-gradient(180deg, hsl(24 10% 5% / 0.2) 0%, hsl(24 10% 5% / 0.5) 50%, hsl(24 10% 5% / 0.95) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(24 8% 12%) 0%, hsl(24 10% 8%) 100%);
+    --shadow-bronze: 0 8px 30px -8px hsl(32 55% 52% / 0.35);
+    --shadow-deep: 0 24px 60px -20px hsl(0 0% 0% / 0.6);
+
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 24 10% 7%;
+    --sidebar-foreground: 36 30% 92%;
+    --sidebar-primary: 32 55% 52%;
+    --sidebar-primary-foreground: 24 15% 8%;
+    --sidebar-accent: 24 8% 14%;
+    --sidebar-accent-foreground: 36 30% 92%;
+    --sidebar-border: 30 10% 18%;
+    --sidebar-ring: 32 55% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Bebas Neue', 'Inter', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-bronze {
+    color: hsl(var(--primary));
+  }
+  .bg-bronze {
+    background: hsl(var(--primary));
+  }
+  .gradient-bronze {
+    background: var(--gradient-bronze);
+  }
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  .shadow-bronze {
+    box-shadow: var(--shadow-bronze);
+  }
+  .shadow-deep {
+    box-shadow: var(--shadow-deep);
+  }
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
