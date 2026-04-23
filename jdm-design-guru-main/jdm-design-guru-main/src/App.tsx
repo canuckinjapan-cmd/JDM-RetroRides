@@ -16,9 +16,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/jdm-design-guru">
         <Routes>
-          <Route path="/" element={<Index />} />
+          {/* Try changing path="/" to index or ensure it's absolute within the basename */}
+          <Route index element={<Index />} />
           <Route path="/inventory" element={<Inventory />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
